@@ -33,7 +33,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=auto'
 alias ll='ls -l --color=auto'                              # long list
-alias la='ls -A --color=auto'                              # all but . and ..
+alias la='ls -Al --color=auto'                              # all but . and ..
 alias l='ls -CF --color=auto'                              #
 
 # Prompt
