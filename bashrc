@@ -19,13 +19,6 @@ shopt -s cdspell
 # Don't put duplicate lines in the history.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
-# todo.txt stuff
-export TODO_TXT_DEFAULT_ACTION=ls
-PATH=$PATH:"/home/heath/.todo/"
-alias t="todo.sh -d /home/heath/.todo/todo.cfg"
-complete -F _todo t
-source /home/heath/.todo/todo_completion
-
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
