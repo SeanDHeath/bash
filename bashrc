@@ -22,6 +22,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
+alias xxz='XZ_OPT=-T0 tar cvJf'
 
 # Misc
 alias less='less -r'                          # raw control characters
