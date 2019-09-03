@@ -48,7 +48,7 @@ function pushcfg() {
   cd $dir
 }
 function addpkg() {
-  echo "$1" >> ~/.linuxconfig/packages
+  echo "$1" >> ~/.config/linuxconfig/packages
 }
 
 # Some shortcuts for different directory listings
