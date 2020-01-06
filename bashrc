@@ -38,6 +38,7 @@ alias whence='type -a'                        # where, of a sort
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
+alias vim='nvim'
 
 # Config management
 alias runcfg='~/.linuxconfig/setup.sh'
