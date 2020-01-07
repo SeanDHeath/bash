@@ -39,6 +39,7 @@ alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias vim='nvim'
+alias resetcac="sudo systemctl restart pcscd"
 
 # Config management
 alias runcfg='~/.linuxconfig/setup.sh'
