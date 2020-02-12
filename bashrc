@@ -59,6 +59,11 @@ alias ll='ls -l --color=auto'                              # long list
 alias la='ls -Al --color=auto'                              # all but . and ..
 alias l='ls -CF --color=auto'                              #
 
+# aws cli
+function daws(){
+  aws "$@" --profile dftc
+}
+
 # Prompt
 source ~/.git-prompt.sh
 BLACK='\e[0;30m'        # Black
