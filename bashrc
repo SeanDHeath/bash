@@ -30,7 +30,8 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
-alias xxz='XZ_OPT=-T0 tar cvJf'
+alias xxz='XZ_OPT=-T0 tar xvJf'
+alias cxz='XZ_OPT=-T0 tar cvJf'
 
 # Misc
 alias less='less -r'                          # raw control characters
@@ -74,3 +75,8 @@ PURPLE='\e[0;35m'       # Purple
 CYAN='\e[0;36m'         # Cyan
 WHITE='\e[0;37m'        # White
 export PS1="\[$GREEN\]\t\[$RED\]-\[$CYAN\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$PURPLE\]\$(__git_ps1)\[$WHITE\]\$ "
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
