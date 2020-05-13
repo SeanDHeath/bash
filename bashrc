@@ -30,8 +30,18 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
+
+# xz compression
 alias xxz='XZ_OPT=-T0 tar xvJf'
 alias cxz='XZ_OPT=-T0 tar cvJf'
+
+# nordvpn
+alias nordu='sudo systemctl start nordvpnd'
+alias nordd='sudo systemctl stop nordvpnd'
+
+# virt-manager
+alias vmu='sudo systemctl start libvirtd;sudo virsh net-start default'
+alias vmd='sudo systemctl stop libvirtd'
 
 # Misc
 alias less='less -r'                          # raw control characters
