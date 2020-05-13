@@ -36,12 +36,12 @@ alias xxz='XZ_OPT=-T0 tar xvJf'
 alias cxz='XZ_OPT=-T0 tar cvJf'
 
 # nordvpn
-alias nordu='sudo systemctl start nordvpnd'
+alias nordu='sudo systemctl start nordvpnd;nordvpn c us'
 alias nordd='sudo systemctl stop nordvpnd'
 
 # virt-manager
-alias vmu='sudo systemctl start libvirtd;sudo virsh net-start default'
-alias vmd='sudo systemctl stop libvirtd'
+alias vmu='sudo systemctl start libvirtd;sudo virsh net-start default;virt-manager'
+alias vmd='sudo systemctl stop libvirtd;sudo virsh net-destroy default'
 
 # Misc
 alias less='less -r'                          # raw control characters
@@ -86,7 +86,5 @@ CYAN='\e[0;36m'         # Cyan
 WHITE='\e[0;37m'        # White
 export PS1="\[$GREEN\]\t\[$RED\]-\[$CYAN\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$PURPLE\]\$(__git_ps1)\[$WHITE\]\$ "
 
-export PATH="$HOME/.cargo/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
