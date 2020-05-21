@@ -29,21 +29,19 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTSIZE=""
 
 # Set up fzf
+export FZF_CTRL_R_OPTS='--sort'
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 source $HOME/.config/bash/completion.bash 2>/dev/null
 source $HOME/.config/bash/key-bindings.bash 2>/dev/null
-#bind "$(bind -s | grep '^"\\C-r"' | sed 's/"/"\\C-x/' | sed 's/"$/\\C-m"/')"
-#export FZF_DEFAULT_OPTS="--ansi --preview '(highlight -O ansi -l {} 2>/dev/null || cat {} || tree -C {}) 2>/dev/null | head -200'"
-#export FZF_CTRL_R_OPTS='--sort'
-#export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-#export FZF_DEFAULT_COMMAND='fd --type f'
 
-# fzf path / directory completion
-#_fzf_compgen_path() {
-  #fd --hidden --follow --exclude ".git" . "$1"
-#}
-#_fzf_compgen_dir() {
-  #fd --type d --hidden --follow --exclude ".git" . "$1"
-#}
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
 # fda - including hidden directories
 fda() {
   local dir
@@ -117,23 +115,56 @@ fshow() {
 FZF-EOF"
 }
 
+# cf - fuzzy cd from anywhere
+# ex: cf word1 word2 ... (even part of a file name)
+# zsh autoload function
+cf() {
+  local file
+
+  file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
+
+  if [[ -n $file ]]
+  then
+     if [[ -d $file ]]
+     then
+        cd -- $file
+     else
+        cd -- ${file:h}
+     fi
+  fi
+}
+
+# cdf - cd into the directory of the selected file
+cdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
 fhelp(){
     echo ""
+    echo "# KEYBINDINGS"
+    echo "CTRL-T - Paste selected files onto command line"
+    echo "CTRL-R - Paste selected commands from history onto command line"
+    echo "ALT-C  - cd into the selected directory"
+    echo ""
     echo "# FILES"
-    echo "fo    - open file, CTRL-O to open, CTRL-E to edit"
-    echo "fe    - edit file, search for title"
-    echo "fif   - find in file, grep for string and view contents"
+    echo "fo     - open file, CTRL-O to open, CTRL-E to edit"
+    echo "fe     - edit file, search for title"
+    echo "fif    - find in file, grep for string and view contents"
     echo ""
     echo "# DIRECTORIES"
-    echo "fd    - find directory"
-    echo "fda   - find directory includes dotfiles"
+    echo "fd     - find directory"
+    echo "fda    - find directory includes dotfiles"
+    echo "cf     - cd from anywhere"
+    echo "cdf    - cd into directory containing selected file"
     echo ""
     echo "# GIT"
-    echo "fcoc  - checkout commit"
-    echo "fshow - commit browser"
+    echo "fcoc   - checkout commit"
+    echo "fshow  - commit browser"
     echo ""
     echo "# PROCESSES"
-    echo "fkill - kill process"
+    echo "fkill  - kill process"
     echo ""
 }
 
