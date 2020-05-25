@@ -29,6 +29,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTSIZE=""
 
 # Set up fzf
+export FZF_DEFAULT_COMMAND='find * -type f'
 export FZF_CTRL_R_OPTS='--sort'
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 source $HOME/.config/bash/completion.bash 2>/dev/null
