@@ -21,6 +21,8 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
 
 # History Options
 #
