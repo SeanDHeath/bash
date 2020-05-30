@@ -112,7 +112,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo " [${BRANCH}${STAT}]"
+		echo -e " [${BRANCH}${STAT}]"
 	else
 		echo ""
 	fi
@@ -147,11 +147,11 @@ function parse_git_dirty {
 		bits="!${bits}"
 	fi
 	if [ ! "${bits}" == "" ]; then
-		echo " ${bits}"
+		echo -e " \001$RED\002${bits}\001$PURPLE\002"
 	else
 		echo ""
 	fi
 }
 
-export PS1="\[$GREEN\]\u \[$CYAN\]\h \[$YELLOW\]\w\[$PURPLE\]\$(parse_git_branch) \[$RED\]\$(nonzero_return)\[$WHITE\]> "
+export PS1="\[$GREEN\]\u\[$RED\]|\[$WHITE\]\h\[$RED\]|\[$GREEN\]\w\[$PURPLE\]\$(parse_git_branch)\[$RED\]\$(nonzero_return)\[$WHITE\]> "
 #export PS1="\[$GREEN\]\t\[$RED\]-\[$CYAN\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$PURPLE\]\$(__git_ps1)\[$WHITE\]\$ "
