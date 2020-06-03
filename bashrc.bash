@@ -153,5 +153,5 @@ function parse_git_dirty {
 	fi
 }
 
-export PS1="\[$GREEN\]\u\[$RED\]|\[$WHITE\]\h\[$RED\]|\[$GREEN\]\w\[$PURPLE\]\$(parse_git_branch)\[$RED\]\$(nonzero_return)\[$WHITE\]> "
+export PS1="\n\[$GREEN\]\u\[$RED\]|\[$WHITE\]\h\[$RED\]|\[$GREEN\]\w\[$PURPLE\]\$(parse_git_branch)\[$RED\]\$(nonzero_return)\[$WHITE\]> "
 #export PS1="\[$GREEN\]\t\[$RED\]-\[$CYAN\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$PURPLE\]\$(__git_ps1)\[$WHITE\]\$ "
