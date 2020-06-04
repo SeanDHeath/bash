@@ -53,6 +53,10 @@ alias cxz='XZ_OPT=-T0 tar cvJf'
 alias nordu='sudo systemctl start nordvpnd;nordvpn c us'
 alias nordd='sudo systemctl stop nordvpnd'
 
+# wireguard
+alias wgu='sudo wg-quick up wg0'
+alias wgd='sudo wg-quick down wg0'
+
 # virt-manager
 alias vmu='sudo systemctl start libvirtd;sudo virsh net-start default;virt-manager'
 alias vmd='sudo systemctl stop libvirtd;sudo virsh net-destroy default'
